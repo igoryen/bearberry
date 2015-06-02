@@ -2,8 +2,8 @@
 
 class Application_Model_User {
 
-  protected $_first_name;
-  protected $_last_name;
+  protected $_firstName;
+  protected $_lastName;
   protected $_handle;
   protected $_id;
 
@@ -15,16 +15,22 @@ class Application_Model_User {
 
   public function __set($name, $value) {
     $method = 'set' . $name;
-    if (('mapper' == $name) || !method_exists($this, $method)) {
-      throw new Exception('Invalid user property');
+    if ('mapper' == $name) {
+      throw new Exception('__set(): Invalid user property: wrong name: ' . $name);
+    }
+    elseif (!method_exists($this, $method)) {
+      throw new Exception('__set(): Invalid user property: nonexistent method: ' . $method);
     }
     $this->$method($value);
   }
 
   public function __get($name) {
     $method = 'get' . $name;
-    if (('mapper' == $name) || !method_exists($this, $method)) {
-      throw new Exception('Invalid user property');
+    if ('mapper' == $name){
+      throw new Exception('__get(): Invalid user property: name: ' . $name );
+    }
+    elseif (!method_exists($this, $method)) {
+      throw new Exception('__get(): Invalid user property: nonexistent method: ' . $method . ', name: ' . $name);
     }
     return $this->$method();
   }
@@ -46,7 +52,7 @@ class Application_Model_User {
    * @return \Application_Model_User
    */
   public function setFirstName($first_name) {
-    $this->_first_name = (string) $first_name;
+    $this->_firstName = (string) $first_name;
     return $this;
   }
 
@@ -55,7 +61,7 @@ class Application_Model_User {
    * @return type
    */
   public function getFirstName() {
-    return $this->_first_name;
+    return $this->_firstName;
   }
 
   /**
@@ -64,7 +70,7 @@ class Application_Model_User {
    * @return \Application_Model_User
    */
   public function setLastName($last_name) {
-    $this->_last_name = (string) $last_name;
+    $this->_lastName = (string) $last_name;
     return $this;
   }
 
@@ -73,7 +79,7 @@ class Application_Model_User {
    * @return type
    */
   public function getLastName() {
-    return $this->_last_name;
+    return $this->_lastName;
   }
 
   /**

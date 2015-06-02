@@ -17,7 +17,7 @@ class Application_Model_UserMapper {
 
   public function getDbTable() {
     if (null === $this->_dbTable) {
-      $this->setDbTable('Application_Model_DbTable_Guestbook');
+      $this->setDbTable('Application_Model_DbTable_User');
     }
     return $this->_dbTable;
   }
@@ -44,7 +44,7 @@ class Application_Model_UserMapper {
   /**
    * Find a user by id
    * @param type $id
-   * @param Application_Model_Guestbook $guestbook
+   * @param Application_Model_User $user
    * @return type
    */
   public function find($id, Application_Model_User $user) {
