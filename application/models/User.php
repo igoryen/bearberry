@@ -1,6 +1,5 @@
 <?php
 
-// application/models/User.php
 class Application_Model_User {
 
   protected $_first_name;
@@ -8,32 +7,109 @@ class Application_Model_User {
   protected $_handle;
   protected $_id;
 
-  public function __set($name, $value);
+  public function __construct(array $options = null) {
+    if (is_array($options)) {
+      $this->setOptions($options);
+    }
+  }
 
-  public function __get($name);
+  public function __set($name, $value) {
+    $method = 'set' . $name;
+    if (('mapper' == $name) || !method_exists($this, $method)) {
+      throw new Exception('Invalid user property');
+    }
+    $this->$method($value);
+  }
 
-  public function setFirstName($first_name);
+  public function __get($name) {
+    $method = 'get' . $name;
+    if (('mapper' == $name) || !method_exists($this, $method)) {
+      throw new Exception('Invalid user property');
+    }
+    return $this->$method();
+  }
 
-  public function getFirstName();
+  public function setOptions(array $options) {
+    $methods = get_class_methods($this);
+    foreach ($options as $key => $value) {
+      $method = 'set' . ucfirst($key);
+      if (in_array($method, $methods)) {
+        $this->$method($value);
+      }
+    }
+    return $this;
+  }
 
-  public function setLastName($last_name);
+  /**
+   * Set user's first name
+   * @param type $first_name
+   * @return \Application_Model_User
+   */
+  public function setFirstName($first_name) {
+    $this->_first_name = (string) $first_name;
+    return $this;
+  }
 
-  public function getLastName();
+  /**
+   * Get user's first name
+   * @return type
+   */
+  public function getFirstName() {
+    return $this->_first_name;
+  }
 
-  public function setHandle($handle);
+  /**
+   * Set user's last name
+   * @param type $last_name
+   * @return \Application_Model_User
+   */
+  public function setLastName($last_name) {
+    $this->_last_name = (string) $last_name;
+    return $this;
+  }
 
-  public function getHandle();
+  /**
+   * Get user's last name
+   * @return type
+   */
+  public function getLastName() {
+    return $this->_last_name;
+  }
 
-  public function setId($id);
+  /**
+   * Set user's handle
+   * @param type $handle
+   * @return \Application_Model_User
+   */
+  public function setHandle($handle) {
+    $this->_handle = $handle;
+    return $this;
+  }
 
-  public function getId();
-}
+  /**
+   * Get user's handle
+   * @return type
+   */
+  public function getHandle() {
+    return $this->_handle;
+  }
 
-class Application_Model_UserMapper {
+  /**
+   * Set user's ID
+   * @param type $id
+   * @return \Application_Model_User
+   */
+  public function setId($id) {
+    $this->_id = (int) $id;
+    return $this;
+  }
 
-  public function save(Application_Model_User $user);
+  /**
+   * Get user's ID
+   * @return type
+   */
+  public function getId() {
+    return $this->_id;
+  }
 
-  public function find($id);
-
-  public function fetchAll();
 }

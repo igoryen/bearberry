@@ -23,6 +23,7 @@
           <dbTableFile dbTableName="User"/>
         </dbTableDirectory>
         <modelFile modelName="UserMapper"/>
+        <modelFile modelName="User"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <servicesDirectory enabled="false"/>
