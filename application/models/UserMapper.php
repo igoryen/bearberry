@@ -53,25 +53,24 @@ class Application_Model_UserMapper {
       return;
     }
     $row = $result->current();
-    $guestbook->setId($row->id)
-      ->setEmail($row->email)
-      ->setComment($row->comment)
-      ->setCreated($row->created);
+    $user->setId($row->id)
+      ->setFirstName($row->first_name)
+      ->setLastName($row->last_name)
+      ->setHandle($row->handle);
   }
 
   public function fetchAll() {
     $resultSet = $this->getDbTable()->fetchAll();
-    $entries   = array();
-    foreach ($resultSet as
-      $row) {
-      $entry     = new Application_Model_Guestbook();
-      $entry->setId($row->id)
-        ->setEmail($row->email)
-        ->setComment($row->comment)
-        ->setCreated($row->created);
-      $entries[] = $entry;
+    $userSet   = array();
+    foreach ($resultSet as $row) {
+      $user     = new Application_Model_User();
+      $user->setId($row->id)
+        ->setFirstName($row->first_name)
+        ->setLastName($row->last_name)
+        ->setHandle($row->handle);
+      $userSet[] = $user;
     }
-    return $entries;
+    return $userSet;
   }
 
 }
