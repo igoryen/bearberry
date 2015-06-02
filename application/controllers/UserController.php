@@ -6,8 +6,12 @@ class UserController extends Zend_Controller_Action {
     /* Initialize action controller here */
   }
 
+  /**
+   * Do `SELECT * FROM user` and display all the users in the index.phmtl
+   */
   public function indexAction() {
-    // action body
+    $user = new Application_Model_UserMapper();
+    $this->view->users = $user->fetchAll();
   }
 
 }
