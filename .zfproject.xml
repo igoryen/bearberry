@@ -28,6 +28,7 @@
         <modelFile modelName="User"/>
         <modelFile modelName="ExerciseMapper"/>
         <modelFile modelName="Exercise"/>
+        <modelFile modelName="ProgressMapper"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <servicesDirectory enabled="false"/>
