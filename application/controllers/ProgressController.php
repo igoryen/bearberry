@@ -7,7 +7,8 @@ class ProgressController extends Zend_Controller_Action {
   }
 
   public function indexAction() {
-    // action body
+    $progress                = new Application_Model_DbTable_Progress();
+    $this->view->progressSet = $progress->fetchAll();
   }
 
 }
