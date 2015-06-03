@@ -1,4 +1,14 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Progress</b> and script/action name <b>index</b></p>
-</div>
+Progress records: <br />
+<table>
+
+  <?php foreach ($this->progressSet as $progress): ?>
+    <tr>
+      <td><?php echo $this->escape($progress->id) ?></td>
+      <td><?php echo $this->escape($progress->eid) ?></td>
+      <td><?php echo $this->escape($progress->uid) ?></td>
+      <td><?php echo $this->escape($progress->week) ?></td>
+      <td><?php echo $this->escape($progress->weight) ?></td>
+    </tr>
+  <?php endforeach ?>
+    
+</table>
