@@ -1,13 +1,13 @@
 # adding a new exercise to the database
-INSERT INTO bearberry.exercise (id, `name`, abbreviation, `force`, main_muscle, other_muscle, description) 
+INSERT INTO bearberry.exercise (id, abbreviation, `name`, `force`, main_muscle, other_muscle, description) 
 VALUES
-(99, 
-'sms', 
-'Smith Machine Shrug', 
-'pull', 
-'traps',
-'middle back, shoulders', 
-'Hard to hold the barbell in hands');
+(100, 
+'khropb', 
+'Knee/Hip Raise On Parallel Bars', 
+'abs', 
+'abs',
+null, 
+null);
 
 SELECT * 
 FROM bearberry.exercise 
