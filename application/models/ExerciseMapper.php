@@ -34,7 +34,7 @@ class Application_Model_ExerciseMapper {
       'muscle' => $exercise->getMuscle(),
       'description' => $exercise->getDescription(),
     );
-    if (null === ($id   = $exercise->getId())) {
+    if (null === ($id = $exercise->getId())) {
       unset($data['id']);
       $this->getDbTable()->insert($data);
     }
@@ -65,16 +65,48 @@ class Application_Model_ExerciseMapper {
 
   public function fetchAll() {
     $resultSet = $this->getDbTable()->fetchAll();
-    $exerciseSet   = array();
+    return $this->retvalar($resultSet);
+  }
+
+//  public function fetchAll() {
+//    $resultSet = $this->getDbTable()->fetchAll();
+//    $exerciseSet = array();
+//    foreach ($resultSet as $row) {
+//      $exercise = new Application_Model_Exercise();
+//      $exercise->setId($row->id)
+//        ->setFirstName($row->first_name)
+//        ->setLastName($row->last_name)
+//        ->setHandle($row->handle);
+//      $exerciseSet[] = $exercise;
+//    }
+//    return $exerciseSet;
+//  }
+
+  /**
+   * retvalar = ret(urn) var(iables') ar(ray)
+   * Put the result from querying the database into an array to return to the view
+   * @param type $resultSet
+   * @return \Application_Model_Progress
+   */
+  public function retvalar($resultSet) {
+    $outbox = array();
+    $recordSet = array();
+
+    $columnSet = $this->getDbTable()->info(Zend_Db_Table_Abstract::COLS);
+
     foreach ($resultSet as $row) {
-      $exercise      = new Application_Model_Exercise();
+      $exercise = new Application_Model_Exercise();
       $exercise->setId($row->id)
-        ->setFirstName($row->first_name)
-        ->setLastName($row->last_name)
-        ->setHandle($row->handle);
+        ->setName($row->name)
+        ->setAbbreviation($row->abbreviation)
+        ->setForce($row->force)
+        ->setMuscle($row->muscle)
+        ->setDescription($row->description);
       $exerciseSet[] = $exercise;
     }
-    return $exerciseSet;
+    $outbox['columnSet'] = $columnSet;
+    $outbox['exerciseSet'] = $exerciseSet;
+    return $outbox;
   }
 
 }

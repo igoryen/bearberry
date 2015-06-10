@@ -10,8 +10,8 @@ class ExerciseController extends Zend_Controller_Action {
    * Do `SELECT * FROM Exercise` and display all the exercises in the index.phmtl
    */
   public function indexAction() {
-    $exercise =  new Application_Model_DbTable_Exercise();
-    $this->view->exerciseSet = $exercise->fetchAll();
+    $em =  new Application_Model_ExerciseMapper();
+    $this->view->inbox = $em->fetchAll();
   }
 
 }

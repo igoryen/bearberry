@@ -1,13 +1,23 @@
 Exercises: <br />
+<?php
+$columnSet = $this->inbox['columnSet'];
+$exerciseSet = $this->inbox['exerciseSet'];
+?>
 <table>
 
-  <?php foreach ($this->exerciseSet as $exercise): ?>
+  <tr>
+    <?php foreach ($columnSet as $column): ?>
+      <th><?php echo $this->escape($column); ?></th>
+    <?php endforeach; ?>
+  </tr>
+
+  <?php foreach ($exerciseSet as $exercise): ?>
     <tr>
       <td><?php echo $this->escape($exercise->id) ?></td>
+      <td><?php echo $this->escape($exercise->name) ?></td>
+      <td><?php echo $this->escape($exercise->abbreviation) ?></td>
       <td><?php echo $this->escape($exercise->force) ?></td>
       <td><?php echo $this->escape($exercise->muscle) ?></td>
-      <td><?php echo $this->escape($exercise->abbreviation) ?></td>
-      <td><?php echo $this->escape($exercise->name) ?></td>
       <td><?php echo $this->escape($exercise->description) ?></td>
     </tr>
   <?php endforeach ?>
