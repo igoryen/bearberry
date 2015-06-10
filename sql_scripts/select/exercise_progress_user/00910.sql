@@ -3,7 +3,7 @@
 # that first sifts everything that doesn't have the sought user ID  
 # and then returns it for other stuff to be sifted out
 SELECT 
-  p.id AS 'p.id', # the ID of the progress record
+  #p.id AS 'p.id', # the ID of the progress record
   u.first_name as 'u.fname', 
   e.`force` AS 'e.force', 
   e.id AS 'e.id', 
@@ -43,7 +43,7 @@ FROM
 WHERE   
         p.uid = 4
         AND  
-        e.`force` = 'pull'
+        e.`force` IN ('leg', 'abs')
         AND   
         p.week > 1500
 
