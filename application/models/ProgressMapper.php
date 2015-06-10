@@ -33,7 +33,7 @@ class Application_Model_ProgressMapper {
       'week' => $progress->getWeek(),
       'weight' => $progress->getWeight(),
     );
-    if (null === ($id   = $progress->getId())) {
+    if (null === ($id = $progress->getId())) {
       unset($data['id']);
       $this->getDbTable()->insert($data);
     }
@@ -62,18 +62,35 @@ class Application_Model_ProgressMapper {
   }
 
   public function fetchAll() {
-    $resultSet   = $this->getDbTable()->fetchAll();
-    $progressSet = array();
+    $resultSet = $this->getDbTable()->fetchAll();
+    return $this->retvalar($resultSet);
+  }
+
+  /**
+   * retvalar = ret(urn) var(iables') ar(ray)
+   * Put the result from querying the database into an array to return to the view
+   * @param type $resultSet
+   * @return \Application_Model_Progress
+   */
+  public function retvalar($resultSet) {
+    $outbox = array();
+    $recordSet = array();
+
+    $columnSet = $this->getDbTable()->info(Zend_Db_Table_Abstract::COLS);
+
     foreach ($resultSet as $row) {
-      $progress      = new Application_Model_Progress();
-      $progress->setId($row->id)
+      $p = new Application_Model_Progress();
+      $p->setId($row->id)
         ->setUid($row->uid)
         ->setEid($row->eid)
         ->setWeek($row->week)
-        ->setWeight($row->weight);
-      $progressSet[] = $progress;
+        ->setWeight($row->weight)
+      ;
+      $recordSet[] = $p;
     }
-    return $progressSet;
+    $outbox['columnSet'] = $columnSet;
+    $outbox['recordSet'] = $recordSet;
+    return $outbox;
   }
 
 }

@@ -1,14 +1,25 @@
 Progress records: <br />
-<table>
 
-  <?php foreach ($this->progressSet as $progress): ?>
+<?php
+
+$columnSet = $this->inbox['columnSet'];
+$recordSet = $this->inbox['recordSet'];
+?>
+<table>
+  <tr>
+    <?php foreach ($columnSet as $column): ?>
+      <th><?php echo $this->escape($column); ?></th>
+    <?php endforeach; ?>
+  </tr>
+
+  <?php foreach ($recordSet as $record): ?>
     <tr>
-      <td><?php echo $this->escape($progress->id) ?></td>
-      <td><?php echo $this->escape($progress->eid) ?></td>
-      <td><?php echo $this->escape($progress->uid) ?></td>
-      <td><?php echo $this->escape($progress->week) ?></td>
-      <td><?php echo $this->escape($progress->weight) ?></td>
+      <td><?php echo $this->escape($record->id) ?></td>
+      <td><?php echo $this->escape($record->eid) ?></td>
+      <td><?php echo $this->escape($record->uid) ?></td>
+      <td><?php echo $this->escape($record->week) ?></td>
+      <td><?php echo $this->escape($record->weight) ?></td>
     </tr>
   <?php endforeach ?>
-    
+
 </table>

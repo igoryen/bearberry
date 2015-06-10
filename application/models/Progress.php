@@ -126,7 +126,7 @@ class Application_Model_Progress {
    */
 
   public function setWeek($week) {
-    $this->_week = (string) $week;
+    $this->_week = (int) $week;
     return $this;
   }
 
@@ -148,7 +148,7 @@ class Application_Model_Progress {
    */
 
   public function setWeight($weight) {
-    $this->_weight = $weight;
+    $this->_weight = (float) $weight;
     return $this;
   }
 
