@@ -9,7 +9,7 @@ SELECT
   e.id AS 'e.id', 
   e.main_muscle AS 'e.main',
   e.other_muscle AS 'e.other',
-  e.abbreviation AS 'e.abbreviation', # TODO: rename the 'abbreviation' column into 'name'
+  e.`name` AS 'e.name',
   p.week AS 'p.week', 
   p.weight AS 'p.weight',
   p.comments AS 'p.comments'
