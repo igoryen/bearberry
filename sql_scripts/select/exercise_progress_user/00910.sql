@@ -7,7 +7,8 @@ SELECT
   u.first_name as 'u.fname', 
   e.`force` AS 'e.force', 
   e.id AS 'e.id', 
-  e.muscle AS 'e.muscle',
+  e.main_muscle AS 'e.main',
+  e.other_muscle AS 'e.other',
   e.abbreviation AS 'e.abbreviation', # TODO: rename the 'abbreviation' column into 'name'
   p.week AS 'p.week', 
   p.weight AS 'p.weight',
@@ -46,5 +47,5 @@ WHERE
         AND   
         p.week > 1500
 
-ORDER BY e.muscle
+ORDER BY e.main_muscle
 ;  
