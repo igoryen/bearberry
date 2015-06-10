@@ -1,0 +1,15 @@
+Exercises: <br />
+<table>
+
+  <?php foreach ($this->exerciseSet as $exercise): ?>
+    <tr>
+      <td><?php echo $this->escape($exercise->id) ?></td>
+      <td><?php echo $this->escape($exercise->force) ?></td>
+      <td><?php echo $this->escape($exercise->muscle) ?></td>
+      <td><?php echo $this->escape($exercise->abbreviation) ?></td>
+      <td><?php echo $this->escape($exercise->name) ?></td>
+      <td><?php echo $this->escape($exercise->description) ?></td>
+    </tr>
+  <?php endforeach ?>
+
+</table>

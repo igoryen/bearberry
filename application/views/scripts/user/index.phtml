@@ -1,0 +1,14 @@
+
+Users: <br />
+<table>
+
+  <?php foreach ($this->users as $user): ?>
+    <tr>
+      <td><?php echo $this->escape($user->id) ?></td>
+      <td><?php echo $this->escape($user->firstName) ?></td>
+      <td><?php echo $this->escape($user->lastName) ?></td>
+      <td><?php echo $this->escape($user->handle) ?></td>
+    </tr>
+  <?php endforeach ?>
+
+</table>
