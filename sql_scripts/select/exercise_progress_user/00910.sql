@@ -43,7 +43,9 @@ FROM
 WHERE   
         p.uid = 4
         AND  
-        e.`force` IN ('leg', 'abs')
+        #e.`force` IN ('leg', 'abs')
+        e.`force` = 'pull'
+        #e.`force` = 'push'
         AND   
         p.week > 1500
 
