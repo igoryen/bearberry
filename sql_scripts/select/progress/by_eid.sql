@@ -1,5 +1,5 @@
-# find record in Progress by exercise ID
-SELECT * FROM bearberry.progress WHERE eid = 56;
+# select/progress/by_eid
+SELECT * FROM bearberry.progress WHERE eid = 75;
 
 SELECT 
   id, 
