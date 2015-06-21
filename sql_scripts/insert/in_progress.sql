@@ -1,4 +1,4 @@
-SELECT * FROM bearberry.progress WHERE eid = 91;
+SELECT * FROM bearberry.progress WHERE eid = 100;
 
 # add a new record for an exercise this week
 INSERT INTO bearberry.progress (uid, eid, week, weight, comments) VALUES (

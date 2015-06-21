@@ -1,1 +1,1 @@
-DELETE FROM bearberry.exercise WHERE id = 0;
+DELETE FROM bearberry.exercise WHERE id = 75;
