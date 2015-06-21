@@ -1,0 +1,1 @@
+UPDATE `bearberry`.`progress` SET `eid`='99' WHERE `id`='232';

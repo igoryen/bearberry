@@ -1,5 +1,5 @@
 # select/progress/by_eid
-SELECT * FROM bearberry.progress WHERE eid = 75;
+SELECT * FROM bearberry.progress WHERE eid = 86;
 
 SELECT 
   id, 
