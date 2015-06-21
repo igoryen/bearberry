@@ -12,8 +12,8 @@ SELECT
 FROM 
   bearberry.Progress AS p
   #JOIN  bearberry.weight AS w  ON  p.id = w.pid
-WHERE p.uid = 4 # <==
-  AND p.eid = 82 # <==
+WHERE p.uid = 1 # <== user ID
+  AND p.eid = 58 # <== exercise ID
 #GROUP BY p.eid
 ;
 
