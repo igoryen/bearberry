@@ -1,1 +1,1 @@
-SELECT * FROM bearberry.exercise WHERE `abbreviation` = 'gm';
+SELECT * FROM bearberry.exercise WHERE `abbreviation` = 'dabc';

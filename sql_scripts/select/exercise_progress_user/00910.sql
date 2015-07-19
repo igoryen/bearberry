@@ -7,12 +7,11 @@ SELECT
   u.first_name as 'u.fname', 
   e.`force` AS 'e.force', 
   e.id AS 'e.id', 
-  e.main_muscle AS 'e.main',
-  e.other_muscle AS 'e.other',
   e.`name` AS 'e.name',
+  CONCAT_WS('; ', e.main_muscle, e.other_muscle) AS 'e.main; others',
   p.week AS 'p.week', 
-  p.weight AS 'p.weight',
-  p.comments AS 'p.comments'
+  p.weight AS 'p.weight'
+  #, p.comments AS 'p.comments'
 FROM 
   bearberry.Progress AS p 
   INNER JOIN
@@ -27,10 +26,8 @@ FROM
       (SELECT * 
         FROM bearberry.Progress
         WHERE uid = 4
-      ) 
+      ) AS ppu # progress particular user
     #-----------------------------
-    AS ppu # progress particular user
-
     GROUP BY eid) # stack the rows so only one of the similar is visible and on the top
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                           AS p2 ON  p.eid  = p2.eid # so that exercise ID coincide in both tables
@@ -43,8 +40,8 @@ FROM
 WHERE   
         p.uid = 4
         AND  
-        #e.`force` IN ('leg', 'abs')
-        e.`force` = 'pull'
+        e.`force` IN ('leg', 'abs')
+        #e.`force` = 'pull'
         #e.`force` = 'push'
         AND   
         p.week > 1500
