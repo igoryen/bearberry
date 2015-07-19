@@ -1,1 +1,1 @@
-SELECT * FROM bearberry.Progress WHERE uid = 1;
+SELECT * FROM bearberry.Progress WHERE uid = 1 AND eid = 91;
