@@ -2,12 +2,12 @@
 INSERT INTO bearberry.exercise (abbreviation, `name`, `force`, main_muscle, other_muscle, description) 
 VALUES
 (
-'cmss', 
-'Calf-Machine Shoulder Shrug', 
-'pull', 
-'traps',
-'', 
-'');
+'kcw',  # abbreviation
+'Seated Leg Tucks', # name
+'abs', # force
+'abs', # main_muscle
+'shoulders',  # other_muscle
+'Kneeling, pulling the cable horizontally');
 
 SELECT * 
 FROM bearberry.exercise 
