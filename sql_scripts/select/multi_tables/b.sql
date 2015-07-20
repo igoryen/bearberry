@@ -1,6 +1,7 @@
 SELECT 
 	#four.Prog_id,
     four.list_id,
+    four.day,
     #four.uid,
     #User.first_name,
     four.eid,
@@ -18,6 +19,7 @@ FROM
 SELECT 
 	ulew.Prog_id,
 	List.list_id,
+    List.day_type AS `day`,
 	ulew.uid,
     ulew.eid,
     ulew.week,
@@ -62,7 +64,9 @@ SELECT
                           # "ppu" = Progress for Particular User
                           # Strain ALL the Progress records by user ID
                           # What are ALL the progress records (progress history) for user X?
-                          SELECT * FROM bearberry.Progress WHERE uid = '%s'
+                          SELECT * FROM bearberry.Progress WHERE 
+                          uid = '%s'
+                          #uid = 1
                           # ppu
                           #1111111111111111111111111111111111111111111
                         ) AS ppu # ppu
@@ -87,7 +91,8 @@ SELECT
 LEFT JOIN bearberry.List AS `List`
 ON List.uid = ulew.uid
 AND List.eid = ulew.eid
-WHERE List.list_id = '%s'
+WHERE List.list_id = '%s' 
+AND List.day_type = '%s'
 #44444444444444444444444444444444444444444444444444444444444444444
 ) AS four
  INNER JOIN bearberry.user     AS User ON User.id  = four.uid
