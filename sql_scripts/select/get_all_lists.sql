@@ -6,4 +6,4 @@ FROM
     bearberry.list
 WHERE
     #uid = 3 AND 
-    list_id = 6;
+    list_id = 7;

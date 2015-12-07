@@ -34,7 +34,7 @@ FROM
     # What are ALL the progress records (progress history) for user X?
       (SELECT * 
         FROM bearberry.Progress
-        WHERE uid = 1
+        WHERE uid = 2
       ) AS ppu # ppu = Progress for Particular User
     #1111111111111111111111111111111111111111111
     GROUP BY eid)  AS mrd # mrd = Most Recent Date

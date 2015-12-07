@@ -7,7 +7,8 @@ SELECT
     four.eid,
     Exer.name,
     #Exer.`force`,
-    CONCAT_WS('; ', lower(Exer.main_muscle), lower(Exer.other_muscle)) AS 'main_others',
+    # CONCAT_WS('; ', lower(Exer.main_muscle), lower(Exer.other_muscle)) AS 'main_others',
+    lower(Exer.main_muscle) AS 'main',
     four.week,
     four.weight
     

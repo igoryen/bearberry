@@ -5,5 +5,7 @@ SELECT
 FROM
     bearberry.exercise
 WHERE
-    `name` LIKE '%crunch%'
+    `name` LIKE '%press%'
 ORDER BY abbreviation;
+
+SELECT * FROM bearberry.exercise ORDER BY `name`;

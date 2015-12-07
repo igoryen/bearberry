@@ -2,14 +2,16 @@
 INSERT INTO bearberry.exercise (abbreviation, `name`, `force`, main_muscle, other_muscle, description) 
 VALUES
 (
-'kcw',  # abbreviation
-'Seated Leg Tucks', # name
-'abs', # force
-'abs', # main_muscle
-'shoulders',  # other_muscle
-'Kneeling, pulling the cable horizontally');
+'pc',  # abbreviation
+'Preacher Curl', # name
+'pull', # force
+'biceps', # main_muscle
+'',  # other_muscle
+'Barbell in hands, elbows on support, palms facing up');
 
 SELECT * 
 FROM bearberry.exercise 
-where name like "%shrug%"
+where name like "%concentration curl%"
 ORDER BY id DESC;
+
+select * from bearberry.exercise;
